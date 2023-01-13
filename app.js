@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const prometheusMiddleware = require('express-prometheus-middleware');
 // const Database = require('./db');
 
-const log = require('./utils/logWithReqId');
+// const log = require('./utils/logWithReqId');
 const { attachContext, setRequestId } = require('./utils/context');
 
 const index = require('./routes/index');
