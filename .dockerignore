@@ -33,3 +33,5 @@ kubernetes
 .circleci
 .gitignore
 .nyc_output
+
+temp
