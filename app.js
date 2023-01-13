@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/_/health', healthcheck({
   mongodb: {
     connection: mongoose.connection,
-    critical: true,
+    critical: false,
   },
 }));
 
