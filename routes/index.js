@@ -21,16 +21,22 @@ router.get('/cron/:name', async (req, res) => {
   const endTime = get(req, 'query.endTime', moment().utc().endOf('day').toISOString());
 
   const name = get(req, 'params.name', null);
-  const namespace = get(req, 'query.namespace', 'default');
+  const namespace = get(req, 'query.namespace') || 'default';
 
   if (!name) {
     return res.status(400).send('/cron/:name cron name is required.');
   }
 
-  const cron = await getCronJobByName(name, namespace);
-  cron.scheduledTimestamps = getAllScheduledInInterval(startTime, endTime, cron.schedule);
+  try {
+    const cron = await getCronJobByName(name, namespace);
+    cron.scheduledTimestamps = getAllScheduledInInterval(startTime, endTime, cron.schedule);
 
-  return res.json(cron);
+    return res.json(cron);
+  } catch (e) {
+    console.error(e);
+
+    return res.status(500).send('Error');
+  }
 });
 
 module.exports = router;
