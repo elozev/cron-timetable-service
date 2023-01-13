@@ -1,0 +1,6 @@
+{
+  "database": {
+    "uri": "mongodb+srv://pippa-prod-pri.z0onn.gcp.mongodb.net",
+    "replicaSet": "pippa-prod-shard-0"
+  }
+}

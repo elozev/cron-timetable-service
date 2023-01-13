@@ -1,0 +1,6 @@
+{
+  "database": {
+    "uri": "mongodb+srv://pippa-staging-pri.uxy9p.gcp.mongodb.net",
+    "replicaSet": "pippa-staging-shard-0"
+  }
+}

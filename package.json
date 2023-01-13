@@ -1,0 +1,53 @@
+{
+  "name": "cron-timetable-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "start-local": "./scripts/start-local",
+    "start-debug": "nodemon --inspect ./bin/www",
+    "test": "./scripts/test",
+    "test:ci": "./scripts/test-ci",
+    "lint": "eslint $(find . -name \"*.js\" -not -path \"./node_modules/*\" -not -path \"./coverage/*\")",
+    "lint-fix": "eslint --fix"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^1.4.1",
+    "@kubernetes/client-node": "^0.18.0",
+    "@profilepensions/express-healthcheck": "3.0.1",
+    "@profilepensions/logger": "^2.4.3",
+    "@profilepensions/mongo-error-handler": "2.0.1",
+    "@profilepensions/object-id-validator": "2.0.0",
+    "axios": "^1.2.1",
+    "body-parser": "^1.18.2",
+    "cls-hooked": "^4.2.2",
+    "config": "^3.0.1",
+    "cron-parser": "^4.7.0",
+    "debug": "~2.6.3",
+    "express": "4.16",
+    "express-prometheus-middleware": "^0.9.6",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongoose": "6.2.1",
+    "prom-client": "^12.0.0",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "^1.3.1",
+    "mocha": "^6.1.2",
+    "nodemon": "^1.18.11",
+    "nyc": "^14.0.0",
+    "sinon": "^7.3.2",
+    "tap-junit": "^2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  }
+}

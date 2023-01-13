@@ -1,0 +1,10 @@
+{
+  "database": {
+    "user": "root",
+    "uri": "mongodb//mongodb",
+    "urlOpts": "?authSource=admin"
+  },
+  "pubSub": {
+    "enabled": false
+  }
+}

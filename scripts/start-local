@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export LOCAL=1;
+export PORT=3006;
+nodemon ./bin/www

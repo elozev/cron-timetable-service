@@ -1,0 +1,12 @@
+{
+  "database": {
+    "user": "pippa",
+    "name": "data",
+    "urlOpts": "?ssl=true"
+  },
+  "urls": {},
+  "pubSub": {
+    "enabled": true,
+    "metricTopic": "metrics"
+  }
+}

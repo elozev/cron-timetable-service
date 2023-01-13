@@ -1,0 +1,25 @@
+name: Update develop from staging
+on:
+  push:
+    branches:
+      - staging
+
+  workflow_dispatch:
+
+jobs:
+  updateDevelop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: Reset develop branch
+        run: |
+          git fetch origin staging:staging
+          git reset --hard staging
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Updating develop from staging
+          title: Updating develop from staging
+          branch: update-develop

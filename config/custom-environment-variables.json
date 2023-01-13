@@ -1,0 +1,10 @@
+{
+  "database": {
+    "user": "DB_USER",
+    "database": "DB_NAME",
+    "password": "DB_PASS",
+    "uri": "DB_URL",
+    "replicaSet": "DB_REPLICA_SET",
+    "urlOpts": "DB_URL_OPTS"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "database": {
+      "name": "test",
+      "password": "RIC1L97ATErIPPEn09",
+      "uri": "mongodb://localhost",
+      "urlOpts": ""
+    },
+    "pubSub": {
+      "enabled": false
+    }
+}

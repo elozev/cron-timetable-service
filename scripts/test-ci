@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export LOG_LEVEL='error';
+export NODE_ENV='ci-test';
+
+mocha $(find . -name "*.test.js" -not -path "./node_modules/*") --recursive --exit 
