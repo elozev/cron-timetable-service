@@ -12,8 +12,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/cron', async (req, res) => {
-  const crons = await getAllCronJobs();
-  return res.json(crons);
+  try {
+    const crons = await getAllCronJobs();
+    return res.json(crons);
+  } catch (e) {
+    console.error(e);
+
+    return res.status(500).send('Error: ', e.message);
+  }
 });
 
 router.get('/cron/:name', async (req, res) => {

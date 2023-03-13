@@ -2,7 +2,9 @@ const k8s = require('@kubernetes/client-node');
 const parser = require('cron-parser');
 
 const kc = new k8s.KubeConfig();
-kc.loadFromDefault();
+
+// kc.loadFromDefault();
+kc.loadFromCluster();
 
 const k8sApi = kc.makeApiClient(k8s.BatchV1Api);
 
@@ -29,10 +31,10 @@ const getAllScheduledInInterval = (start, end, schedule) => {
   };
 
   const interval = parser.parseExpression(schedule, options);
-  scheduledRuns.push(interval.prev().toString());
+  scheduledRuns.push(interval.prev());
 
   while (interval.hasNext()) {
-    scheduledRuns.push(interval.next().toString());
+    scheduledRuns.push(interval.next());
   }
 
 
