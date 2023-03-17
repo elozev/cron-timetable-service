@@ -2,12 +2,10 @@ const express = require('express');
 const moment = require('moment');
 const { get } = require('lodash');
 const { getAllCronJobs, getAllScheduledInInterval, getCronJobByName } = require('../utils');
-const { sendMetric } = require('../utils/pubsub');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  await sendMetric(true, 'example-action');
   return res.send({ Hello: 'World' });
 });
 

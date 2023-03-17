@@ -1,30 +1,15 @@
 const express = require('express');
-const logger = require('@profilepensions/logger');
-const mongoose = require('mongoose');
-const healthcheck = require('@profilepensions/express-healthcheck');
-const mongoErrorHandler = require('@profilepensions/mongo-error-handler');
 const bodyParser = require('body-parser');
 const prometheusMiddleware = require('express-prometheus-middleware');
-// const Database = require('./db');
-
-// const log = require('./utils/logWithReqId');
 const { attachContext, setRequestId } = require('./utils/context');
 
 const index = require('./routes/index');
 
 const app = express();
-// Database.connect();
-
-app.use(logger.requestLog);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/_/health', healthcheck({
-  mongodb: {
-    connection: mongoose.connection,
-    critical: false,
-  },
-}));
+app.use('/_/health', (req, res) => res.sendStatus(200));
 
 app.use(prometheusMiddleware({
   extraMasks: [
@@ -69,8 +54,6 @@ app.use((err, req, res, next) => {
   }
   return next(err);
 });
-
-app.use(mongoErrorHandler);
 
 // error handler
 // eslint-disable-next-line no-unused-vars
