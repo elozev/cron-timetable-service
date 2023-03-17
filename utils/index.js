@@ -9,15 +9,17 @@ kc.loadFromDefault();
 const k8sApi = kc.makeApiClient(k8s.BatchV1Api);
 
 const formatCronJob = (cj) => {
+  console.log(cj);
   const { name } = cj.metadata;
   const suspended = cj.spec.suspend;
   const { schedule } = cj.spec;
+  const { status } = cj;
 
   const interval = parser.parseExpression(schedule);
   const nextScheduledDate = interval.next().toString(); // Sat Dec 29 2012 00:42:00 GMT+0200 (EET)
 
   return {
-    name, suspended, schedule, nextScheduledDate,
+    name, suspended, schedule, nextScheduledDate, status,
   };
 };
 
