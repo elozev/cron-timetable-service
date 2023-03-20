@@ -3,8 +3,8 @@ const parser = require('cron-parser');
 
 const kc = new k8s.KubeConfig();
 
-kc.loadFromDefault();
-// kc.loadFromCluster();
+// kc.loadFromDefault();
+kc.loadFromCluster();
 
 const k8sApi = kc.makeApiClient(k8s.BatchV1Api);
 
